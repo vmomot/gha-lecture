@@ -1,5 +1,5 @@
 from allure import title
-#te
+
 
 class TestShop:
 
