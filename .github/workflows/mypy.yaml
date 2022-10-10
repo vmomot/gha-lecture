@@ -1,7 +1,7 @@
 name: Mypy
 
 on:
-  push:
+  commit:
     paths:
       - '*.py'
 
