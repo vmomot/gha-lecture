@@ -26,12 +26,6 @@ jobs:
       - name: Run tests
         run: |
           python -m pytest
-  allure:
-    name: Generate Allure Report
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-
       - name: Get Allure history
         uses: actions/checkout@v2
         if: always()
