@@ -1,0 +1,44 @@
+name: E2E tests
+
+on:
+  pull_request:
+    branches:
+      - main
+
+env:
+  allure-report-path: "allure-report"
+  allure-endpoint: ${{ secrets.ALLURE_ENDPOINT }}
+  allure-token: ${{ secrets.ALLURE_TOKEN }}
+  allure-project-id: ${{ secrets.ALLURE_PROJECT_ID }}
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    container:
+        image: mcr.microsoft.com/playwright/python:v1.27.0-focal
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.10.1
+          architecture: x64
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+#      - name: Install Playwright browsers
+#        run: |
+#          playwright install
+      - name: Run tests
+        run: |
+          python -m pytest --alluredir=$allure-report-path
+      - name: Setup Allure
+        uses: allure-framework/setup-allurectl@v1
+        with:
+            allure-endpoint: ${{ env.allure-endpoint }}
+            allure-token: ${{ env.allure-token }}
+            allure-project-id: ${{ env.allure-project-id }}
+      - name: Upload Allure report
+        run: allurect upload --report-dir=$allure-report-path
