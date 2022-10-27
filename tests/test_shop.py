@@ -1,9 +1,11 @@
-from allure import title
+import allure
 
 
 class TestShop:
 
-    @title("The customer can add a product to the cart and checkout it")
+    @allure.id("5")
+    @allure.tag("UI")
+    @allure.title("The customer can add a product to the cart and checkout it")
     def test_customer_can_checkout_the_product(self, shop_page):
         shop_page.open()
         shop_page.add_product_to_cart('Cropped Stay Groovy off white')
