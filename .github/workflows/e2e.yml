@@ -44,14 +44,8 @@ jobs:
             allure-endpoint: ${{ env.allure-endpoint }}
             allure-token: ${{ env.allure-token }}
             allure-project-id: ${{ env.allure-project-id }}
-#      - name: Install Playwright browsers
-#        run: |
-#          playwright install
       - name: Run tests
-#        run: |
-#          python -m pytest --alluredir=$allure-report-path
-        run: allurectl watch --results ${{ env.allure-report-path }} -- python -m pytest --alluredir=$allure-report-path
+
+        run: allurectl watch --results ${{ env.allure-report-path }} -- python -m pytest --alluredir=${{ allure-report-path }}
         env:
           ALLURE_RESULTS: build/allure-results
-#      - name: Upload Allure report
-#        run: allurectl upload --report-dir=$allure-report-path
