@@ -13,12 +13,14 @@ class ShopPage(BasePage):
 
     @step("Open shop page")
     def open(self):
-        self._page.goto(self._base_url)
+        with step(f'Go to url {self._base_url}'):
+            self._page.goto(self._base_url)
 
     @step('Add the product "{product_name}" to the cart')
     def add_product_to_cart(self, product_name: str):
         try:
-            self._page.click(f'{self._PRODUCT_BUTTON[0]}{product_name}{self._PRODUCT_BUTTON[1]}')
+            with step('Tap on the product button'):
+                self._page.click(f'{self._PRODUCT_BUTTON[0]}{product_name}{self._PRODUCT_BUTTON[1]}')
         except TimeoutError as e:
             assert False, f'Product "{product_name}" not found, error: {e}'
 
