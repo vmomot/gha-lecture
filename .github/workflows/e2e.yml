@@ -32,7 +32,13 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-          echo ${{ env.base_url }} > .env
+      - name: Setup .env
+        run: |
+          echo "ALLURE_ENDPOINT=${{ secrets.ALLURE_ENDPOINT }}" > .env
+          echo "ALLURE_TOKEN=${{ secrets.ALLURE_TOKEN }}" >> .env
+          echo "ALLURE_PROJECT_ID=${{ secrets.ALLURE_PROJECT_ID }}" >> .env
+          echo "BASE_URL=${{ secrets.BASE_URL }}" >> .env
+
 #      - name: Install Playwright browsers
 #        run: |
 #          playwright install
