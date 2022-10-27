@@ -52,4 +52,4 @@ jobs:
             allure-token: ${{ env.allure-token }}
             allure-project-id: ${{ env.allure-project-id }}
       - name: Upload Allure report
-        run: allurect upload --report-dir=$allure-report-path
+        run: allurectl upload --report-dir=$allure-report-path
