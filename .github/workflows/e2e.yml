@@ -10,6 +10,7 @@ env:
   allure-endpoint: ${{ secrets.ALLURE_ENDPOINT }}
   allure-token: ${{ secrets.ALLURE_TOKEN }}
   allure-project-id: ${{ secrets.ALLURE_PROJECT_ID }}
+  base_url: ${{ secrets.BASE_URL }}
 
 jobs:
   test:
