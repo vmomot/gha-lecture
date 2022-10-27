@@ -46,6 +46,6 @@ jobs:
             allure-project-id: ${{ env.allure-project-id }}
       - name: Run tests
 
-        run: allurectl watch --results ${{ env.allure-report-path }} -- python -m pytest --alluredir=${{ allure-report-path }}
+        run: allurectl watch --results ${{ env.allure-report-path }} -- python -m pytest --alluredir=${{ env.allure-report-path }}
         env:
           ALLURE_RESULTS: build/allure-results
