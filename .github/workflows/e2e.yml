@@ -38,8 +38,6 @@ jobs:
       - name: Run tests
         run: |
           python -m pytest --alluredir=$allure-report-path
-  report:
-    needs: test
       - name: Setup Allure
         uses: allure-framework/setup-allurectl@v1
         with:
