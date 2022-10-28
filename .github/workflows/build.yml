@@ -1,13 +1,18 @@
 name: Build Docker for run tests
 
 on:
-  pull_request:
-    types: [ closed ]
+  push:
     paths:
       - 'Dockerfile'
       - '.github/workflows/build.yml'
-    branches:
-      - 'develop'
+      - 'requirements.txt'
+#  pull_request:
+#    types: [ closed ]
+#    paths:
+#      - 'Dockerfile'
+#      - '.github/workflows/build.yml'
+#    branches:
+#      - 'develop'
 
 
 env:

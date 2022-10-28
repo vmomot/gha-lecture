@@ -5,9 +5,8 @@ on:
     branches:
       - main
   push:
-    branches:
-      - test-ops
-      - test-ops-with-docker
+    paths:
+      - '*.py'
 
 
 env:
