@@ -15,6 +15,7 @@ on:
       - '.github/workflows/build.yml'
     branches:
       - 'develop'
+  workflow_dispatch: []
 
 env:
   DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
