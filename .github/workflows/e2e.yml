@@ -35,10 +35,7 @@ jobs:
           pip install -r requirements.txt
       - name: Setup .env
         run: |
-          echo "ALLURE_ENDPOINT=${{ env.ALLURE_ENDPOINT }}" > .env
-          echo "ALLURE_TOKEN=${{ env.ALLURE_TOKEN }}" >> .env
-          echo "ALLURE_PROJECT_ID=${{ env.ALLURE_PROJECT_ID }}" >> .env
-          echo "BASE_URL=${{ env.BASE_URL }}" >> .env
+          echo "BASE_URL=${{ env.base_url }}" > .env
       - name: Setup Allure
         uses: allure-framework/setup-allurectl@v1
         with:
