@@ -14,6 +14,7 @@ env:
   allure-token: ${{ secrets.ALLURE_TOKEN }}
   allure-project-id: ${{ secrets.ALLURE_PROJECT_ID }}
   base_url: ${{ secrets.BASE_URL }}
+  python-version: 3.10.1
 
 jobs:
   test:
@@ -26,7 +27,7 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v2
         with:
-          python-version: 3.10.1
+          python-version: ${{ env.python-version }}
           architecture: x64
       - name: Install dependencies
         run: |
@@ -34,10 +35,10 @@ jobs:
           pip install -r requirements.txt
       - name: Setup .env
         run: |
-          echo "ALLURE_ENDPOINT=${{ secrets.ALLURE_ENDPOINT }}" > .env
-          echo "ALLURE_TOKEN=${{ secrets.ALLURE_TOKEN }}" >> .env
-          echo "ALLURE_PROJECT_ID=${{ secrets.ALLURE_PROJECT_ID }}" >> .env
-          echo "BASE_URL=${{ secrets.BASE_URL }}" >> .env
+          echo "ALLURE_ENDPOINT=${{ env.ALLURE_ENDPOINT }}" > .env
+          echo "ALLURE_TOKEN=${{ env.ALLURE_TOKEN }}" >> .env
+          echo "ALLURE_PROJECT_ID=${{ env.ALLURE_PROJECT_ID }}" >> .env
+          echo "BASE_URL=${{ env.BASE_URL }}" >> .env
       - name: Setup Allure
         uses: allure-framework/setup-allurectl@v1
         with:
@@ -45,7 +46,6 @@ jobs:
             allure-token: ${{ env.allure-token }}
             allure-project-id: ${{ env.allure-project-id }}
       - name: Run tests
-
         run: allurectl watch --results ${{ env.allure-report-path }} -- python -m pytest --alluredir=${{ env.allure-report-path }}
         env:
           ALLURE_RESULTS: build/allure-results
