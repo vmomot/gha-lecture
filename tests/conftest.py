@@ -1,6 +1,7 @@
 from pytest import fixture
 
 from config import Config
+from allure import step
 from src.pages.shop_page import ShopPage
 
 
@@ -12,5 +13,6 @@ def config() -> Config:
 
 @fixture(scope='function')
 def shop_page(config, page) -> ShopPage:
-    page = ShopPage(base_url=config.base_url, playwright_page=page)
+    with step("Create shop page"):
+        page = ShopPage(base_url=config.base_url, playwright_page=page)
     return page
