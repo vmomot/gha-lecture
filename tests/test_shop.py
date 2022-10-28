@@ -14,7 +14,13 @@ class TestShop:
         shop_page.cart.check_that_checkout_alert_is_present()
 
     @allure.tag("Stub")
-    @allure.title("stub test")
+    @allure.description("Test with stub steps to check live documentation")
+    @allure.suite("Smoke")
+    @allure.story("The customer can add a product to the cart and checkout it")
+    @allure.link(url='https://www.youtube.com/watch?v=8QGMjsp8MBU&ab_channel=MarciaLilley',
+                 name='Fight!')
+    @allure.feature("Checkout")
+    @allure.title("Test example")
     @allure.id("6")
     def test_stub(self):
         with allure.step("This is a step"):
