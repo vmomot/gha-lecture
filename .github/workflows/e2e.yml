@@ -8,6 +8,7 @@ on:
     branches:
       - test-ops
       - test-ops-with-docker
+  workflow_dispatch: []
 
 env:
   allure-report-path: "allure-report"
