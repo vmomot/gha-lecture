@@ -11,7 +11,7 @@ def config() -> Config:
     return config
 
 
-@fixture
+@fixture(scope='function', autouse=True)
 def shop_page(config, page) -> ShopPage:
     with step("Init page"):
         page = ShopPage(base_url=config.base_url, playwright_page=page)
