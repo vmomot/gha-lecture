@@ -7,6 +7,7 @@ on:
   push:
     branches:
       - test-ops
+      - test-ops-with-docker
 
 env:
   allure-report-path: "allure-report"
@@ -19,33 +20,16 @@ jobs:
   test:
     runs-on: ubuntu-latest
     container:
-        image: mcr.microsoft.com/playwright/python:v1.27.0-focal
+        image: myimage:latest
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Setup Python
-        uses: actions/setup-python@v2
-        with:
-          python-version: 3.10.1
-          architecture: x64
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
       - name: Setup .env
         run: |
           echo "ALLURE_ENDPOINT=${{ secrets.ALLURE_ENDPOINT }}" > .env
           echo "ALLURE_TOKEN=${{ secrets.ALLURE_TOKEN }}" >> .env
           echo "ALLURE_PROJECT_ID=${{ secrets.ALLURE_PROJECT_ID }}" >> .env
           echo "BASE_URL=${{ secrets.BASE_URL }}" >> .env
-      - name: Setup Allure
-        uses: allure-framework/setup-allurectl@v1
-        with:
-            allure-endpoint: ${{ env.allure-endpoint }}
-            allure-token: ${{ env.allure-token }}
-            allure-project-id: ${{ env.allure-project-id }}
+          source .env
       - name: Run tests
-
         run: allurectl watch --results ${{ env.allure-report-path }} -- python -m pytest --alluredir=${{ env.allure-report-path }}
-        env:
-          ALLURE_RESULTS: build/allure-results
