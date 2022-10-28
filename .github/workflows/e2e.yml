@@ -25,6 +25,6 @@ jobs:
           echo "ALLURE_TOKEN=${{ env.allure-token }}" >> .env
           echo "ALLURE_PROJECT_ID=${{ env.allure-project-id }}" >> .env
           echo "BASE_URL=${{ env.base_url }}" >> .env
-          source .env
+          dotenv .env
       - name: Run tests
         run: allurectl watch --results ${{ env.allure-report-path }} -- python -m pytest --alluredir=${{ env.allure-report-path }}
