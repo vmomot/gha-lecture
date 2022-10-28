@@ -17,7 +17,7 @@ def config() -> Config:
 #     return customer
 
 
-@fixture
+@fixture(scope='function')
 def shop_page(config, page) -> ShopPage:
     page = ShopPage(base_url=config.base_url, playwright_page=page)
     return page
