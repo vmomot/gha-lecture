@@ -21,10 +21,13 @@ jobs:
         uses: actions/checkout@v2
       - name: Setup .env
         run: |
-          echo "ALLURE_ENDPOINT=${{ env.allure-endpoint }}" >> .env
-          echo "ALLURE_TOKEN=${{ env.allure-token }}" >> .env
-          echo "ALLURE_PROJECT_ID=${{ env.allure-project-id }}" >> .env
           echo "BASE_URL=${{ env.base_url }}" >> .env
           dotenv .env
+      - name: Setup Allure CTL
+        uses: allure-framework/setup-allurectl@v1
+        with:
+          allure-endpoint: ${{ env.allure-endpoint }}
+          allure-token: ${{ env.allure-token }}
+          allure-project-id: ${{ env.allure-project-id }}
       - name: Run tests
         run: allurectl watch --results ${{ env.allure-report-path }} -- python -m pytest --alluredir=${{ env.allure-report-path }}
