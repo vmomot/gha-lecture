@@ -27,10 +27,10 @@ jobs:
         uses: actions/checkout@v2
       - name: Setup .env
         run: |
-          echo "ALLURE_ENDPOINT=${{ secrets.ALLURE_ENDPOINT }}" > .env
-          echo "ALLURE_TOKEN=${{ secrets.ALLURE_TOKEN }}" >> .env
-          echo "ALLURE_PROJECT_ID=${{ secrets.ALLURE_PROJECT_ID }}" >> .env
-          echo "BASE_URL=${{ secrets.BASE_URL }}" >> .env
+          echo "ALLURE_ENDPOINT=${{ env.allure-endpoint }}" >> .env
+          echo "ALLURE_TOKEN=${{ env.allure-token }}" >> .env
+          echo "ALLURE_PROJECT_ID=${{ env.allure-project-id }}" >> .env
+          echo "BASE_URL=${{ env.base_url }}" >> .env
           source .env
       - name: Run tests
         run: allurectl watch --results ${{ env.allure-report-path }} -- python -m pytest --alluredir=${{ env.allure-report-path }}
