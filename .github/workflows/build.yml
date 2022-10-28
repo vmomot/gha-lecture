@@ -1,13 +1,6 @@
 name: Build Docker for run tests
 
 on:
-  push:
-    paths:
-      - 'Dockerfile'
-      - '.github/workflows/build.yml'
-    branches:
-      - 'test-ops'
-      - 'test-ops-with-docker'
   pull_request:
     types: [ closed ]
     paths:

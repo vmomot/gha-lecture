@@ -21,7 +21,7 @@ jobs:
   test:
     runs-on: ubuntu-latest
     container:
-        image: vmomot/python-test-container:tagname
+        image: vmomot/python-test-container:latest
     steps:
       - name: Checkout
         uses: actions/checkout@v2
