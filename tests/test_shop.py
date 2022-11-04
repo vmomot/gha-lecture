@@ -27,3 +27,12 @@ class TestShop:
                 with allure.step("This is a sub-sub-step"):
                     with allure.step("This is a assert"):
                         assert True
+
+    @allure.id("35")
+    def test_customer_can_do_some(self):
+        with allure.step('First step'):
+            pass
+        with allure.step('Second step'):
+            pass
+        with allure.step('Assertion'):
+            assert True
