@@ -33,6 +33,28 @@ class TestShop:
         with allure.step('First step'):
             pass
         with allure.step('Second step'):
-            pass
+            raise Exception('упс')
         with allure.step('Assertion'):
             assert True
+
+
+    @allure.id("2")
+    @allure.title("test case 2")
+    @allure.label("owner", "admin")
+    def test_case(self):
+        with allure.step("Step 1"):
+            with allure.step("Sub-step 1"):
+                with allure.step("Sub-sub-sub step 2"):
+                    pass
+        with allure.step("Sub-step 2"):
+            pass
+        with allure.step("Sub-step 3"):
+            pass
+        with allure.step("Step 2"):
+
+            pass
+        with allure.step("Step 3"):
+            pass
+        with allure.step(""):
+            pass
+
