@@ -63,7 +63,6 @@ jobs:
         with:
             message: |
               "Allure report: https://$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
-              "Allure history: https://$GITHUB_REPOSITORY/tree/gh-pages/allure-history"
             repo-token: ${{ secrets.GITHUB_TOKEN }}
             repo-token-user-login: 'github-actions[bot]'
         if: ${{ github.event_name }} == 'pull_request'
