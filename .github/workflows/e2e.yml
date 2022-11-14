@@ -62,7 +62,7 @@ jobs:
         uses: mshick/add-pr-comment@v1
         with:
             message: |
-              "Allure report: https://$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+              Allure report: https://${{env.GITHUB_REPOSITORY}}/actions/runs/${{env.GITHUB_RUN_ID}}
             repo-token: ${{ secrets.GITHUB_TOKEN }}
             repo-token-user-login: 'github-actions[bot]'
         if: ${{ github.event_name }} == 'pull_request'
