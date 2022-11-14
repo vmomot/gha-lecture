@@ -25,6 +25,10 @@ jobs:
       - name: Run tests
         run: |
           python -m pytest
+  report:
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
       - name: Get Allure history
         uses: actions/checkout@v2
         if: always()
@@ -32,10 +36,6 @@ jobs:
         with:
           ref: gh-pages
           path: gh-pages
-  report:
-    runs-on: ubuntu-latest
-    needs: test
-    steps:
       - name: Allure Report
         uses: simple-elf/allure-report-action@master
         if: always()
