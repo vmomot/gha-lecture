@@ -12,7 +12,7 @@ class Cart:
 
     @step("Tap on cart button")
     def open_cart(self):
-        with step(f'Click on {self._OPEN_CART_BUTTON}')
+        with step(f'Click on {self._OPEN_CART_BUTTON}'):
             self._page.click(self._OPEN_CART_BUTTON)
 
     @step("Tap on checkout button")
