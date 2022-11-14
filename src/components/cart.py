@@ -17,7 +17,7 @@ class Cart:
 
     @step("Tap on checkout button")
     def tap_on_checkout_button(self):
-        with step(f'Click by selector {self._CHECKOUT_BUTTON}')
+        with step(f'Click by selector {self._CHECKOUT_BUTTON}'):
             self._page.click(self._CHECKOUT_BUTTON)
 
     @step('Check that checkout is present')
