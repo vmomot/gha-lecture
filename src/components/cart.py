@@ -12,12 +12,12 @@ class Cart:
 
     @step("Tap on cart button")
     def open_cart(self):
-        with step(f'Click on {self._OPEN_CART_BUTTON}'):
+        with step(f'Click on {self._OPEN_CART_BUTTON}')
             self._page.click(self._OPEN_CART_BUTTON)
 
     @step("Tap on checkout button")
     def tap_on_checkout_button(self):
-        with step(f'Click by selector {self._CHECKOUT_BUTTON}'):
+        with step(f'Click by selector {self._CHECKOUT_BUTTON}')
             self._page.click(self._CHECKOUT_BUTTON)
 
     @step('Check that checkout is present')
