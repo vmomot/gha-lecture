@@ -54,6 +54,7 @@ jobs:
         env:
           PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PUBLISH_DIR: ./public
+          PUBLISH_BRANCH: gh-pages
       - name: Print report url
         if: always()
         run: 'echo "Report url: ${{ steps.deploy.outputs.url }}"'
