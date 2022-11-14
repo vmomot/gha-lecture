@@ -52,7 +52,7 @@ jobs:
           PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PUBLISH_BRANCH: gh-pages
           PUBLISH_DIR: allure-history
-  notify:
+  pull-request-comment:
     runs-on: ubuntu-latest
     needed: [test, report]
     steps:
@@ -64,3 +64,4 @@ jobs:
               Allure history: https://$GITHUB_REPOSITORY/tree/gh-pages/allure-history
             repo-token: ${{ secrets.GITHUB_TOKEN }}
             repo-token-user-login: 'github-actions[bot]'
+        if: ${{ github.event_name }} == 'pull_request'
