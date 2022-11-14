@@ -34,7 +34,7 @@ jobs:
           path: gh-pages
   report:
     runs-on: ubuntu-latest
-    need: test
+    needs: test
     steps:
       - name: Allure Report
         uses: simple-elf/allure-report-action@master
@@ -54,7 +54,7 @@ jobs:
           PUBLISH_DIR: allure-history
   pull-request-comment:
     runs-on: ubuntu-latest
-    need: [test, report]
+    needs: [test, report]
     steps:
       - name: Add link to PR
         uses: mshick/add-pr-comment@v1
