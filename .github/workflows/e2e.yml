@@ -54,6 +54,9 @@ jobs:
           PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PUBLISH_BRANCH: gh-pages
           PUBLISH_DIR: allure-history
+      - name: Print report url
+        if: always()
+        run: echo "Report URL https://$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
   pull-request-comment:
     runs-on: ubuntu-latest
     needs: [test, report]
