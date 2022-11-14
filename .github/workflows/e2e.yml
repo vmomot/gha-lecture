@@ -30,7 +30,6 @@ jobs:
   report:
     runs-on: ubuntu-latest
     needs: test
-    id: allure-report
     steps:
       - name: Get Allure history
         uses: actions/checkout@v2
@@ -56,7 +55,7 @@ jobs:
           PUBLISH_DIR: ./public
       - name: Print report url
         if: always()
-        run: echo ${{ allure-report.outputs.url }}
+        run: echo ${{ report.outputs.url }}
   pull-request-comment:
     runs-on: ubuntu-latest
     needs: [test, report]
@@ -65,7 +64,7 @@ jobs:
         uses: mshick/add-pr-comment@v1
         with:
             message: |
-              Allure report: ${{ allure-report.outputs.url }}
+              Allure report: ${{ report.outputs.url }}
             repo-token: ${{ secrets.GITHUB_TOKEN }}
             repo-token-user-login: 'github-actions[bot]'
         if: ${{ github.event_name }} == 'pull_request'
