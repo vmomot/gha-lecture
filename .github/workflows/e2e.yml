@@ -33,7 +33,7 @@ jobs:
           python -m pytest --alluredir=${{ env.ALLURE_RESULTS_PATH }}
       - name: Upload artifacts
         if: always()
-        uses: actions/upload-pages-artifact@v1
+        uses: actions/upload-artifact@v3
         with:
           path: ${{ env.ALLURE_RESULTS_PATH }}
           retention-days: 7
@@ -65,6 +65,8 @@ jobs:
       - name: Deploy the report to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v1
+        with:
+          folder: ${{ env.ALLURE_RESULTS_PATH }}
       - run: 'echo "Report url: ${{ steps.deployment.outputs.page_url }}"'
   pull-request-comment:
     runs-on: ubuntu-latest
