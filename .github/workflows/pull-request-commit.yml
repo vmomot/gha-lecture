@@ -15,7 +15,7 @@ steps:
         uses: mshick/add-pr-comment@v1
         with:
             message: |
-              Allure report: ${{ workflows.pages-build-deployment.deploy.outputs.page_url }}
+              Allure report: ${{ github.event.workflow_run.workflows.pages-build-deployment.deploy.outputs.page_url }}
             repo-token: ${{ secrets.GITHUB_TOKEN }}
             repo-token-user-login: 'github-actions[bot]'
-        if: ${{ workflows.e2e.event_name }} == 'pull_request'
+        if: ${{ github.event.workflow_run.workflows.e2e.event_name }} == 'pull_request'
