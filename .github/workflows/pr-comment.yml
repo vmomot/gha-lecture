@@ -9,7 +9,6 @@ on:
 jobs:
   pull-request-comment:
     runs-on: ubuntu-latest
-    needs: [pages-build-deployment]
     steps:
       - name: Add link to PR
         uses: mshick/add-pr-comment@v1
