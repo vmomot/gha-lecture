@@ -1,0 +1,19 @@
+name: Newman tests
+
+
+on:
+  schedule:
+    - cron: '0 4 * * *'
+  workflow_dispatch:
+
+
+jobs:
+  integration-tests:
+    - uses: actions/checkout@v3
+    - uses: matt-ball/newman-action@v1.0.4
+      with:
+        collection: postman/postman_collection.json
+        environment: postman/postman_environment.json
+        #reporters: '["emojitrain"]'
+        delayRequest: 1000
+        envVar: '[{ "key": "url", "value": "http://localhost:3000" }]'
