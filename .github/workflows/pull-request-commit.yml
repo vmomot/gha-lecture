@@ -2,7 +2,7 @@ name: Add comment to pull request
 
 on:
     workflow_run:
-        workflows: ["e2e", "pages-build-deployment"]
+        workflows: ["E2E tests", "pages-build-deployment"]
         types:
             - completed
 
