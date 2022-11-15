@@ -1,10 +1,10 @@
-name: Add comment to pull request
+name: PR comment
 
 on:
-    workflow_run:
-        workflows: ["E2E tests", "pages-build-deployment"]
-        types:
-            - completed
+  workflow_run:
+    workflows: ["E2E tests", "pages-build-deployment"]
+    types:
+      - completed
 
 jobs:
   pull-request-comment:
@@ -15,7 +15,7 @@ jobs:
         uses: mshick/add-pr-comment@v1
         with:
             message: |
-              Allure report: ${{ github.event.workflow_run.workflows.pages-build-deployment.deploy.outputs.page_url }}
+              Allure report: ${{ secrets.GITHUB_PAGES_URL }}
             repo-token: ${{ secrets.GITHUB_TOKEN }}
             repo-token-user-login: 'github-actions[bot]'
         if: ${{ github.event.workflow_run.workflows.e2e.event_name }} == 'pull_request'
