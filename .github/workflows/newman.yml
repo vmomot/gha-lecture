@@ -8,12 +8,13 @@ on:
 
 
 jobs:
-  integration-tests:
-    - name: Checkout
-      uses: actions/checkout@v2
-    - name: Run Postman integration tests with Newman
-      uses: matt-ball/newman-action@v1.0.4
-      with:
-        collection: postman/postman_collection.json
-        #reporters: '["emojitrain"]'
-        delayRequest: 1000
+  steps:
+    integration-tests:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Run Postman integration tests with Newman
+        uses: matt-ball/newman-action@v1.0.4
+        with:
+          collection: postman/postman_collection.json
+          #reporters: '["emojitrain"]'
+          delayRequest: 1000
