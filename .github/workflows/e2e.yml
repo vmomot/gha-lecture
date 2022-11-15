@@ -10,7 +10,7 @@ env:
   ALLURE_RESULTS_PATH: ./allure-results
 
 jobs:
-  test:
+  tests:
     runs-on: ubuntu-latest
     container:
       image: mcr.microsoft.com/playwright/python:v1.27.1-focal
@@ -38,7 +38,7 @@ jobs:
           name: allure-results
           path: ${{ env.ALLURE_RESULTS_PATH }}
           retention-days: 7
-  report:
+  generate-report:
     runs-on: ubuntu-latest
     needs: test
     permissions:
