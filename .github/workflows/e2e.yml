@@ -35,6 +35,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v3
         with:
+          name: allure-results
           path: ${{ env.ALLURE_RESULTS_PATH }}
           retention-days: 7
   report:
@@ -66,7 +67,7 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v1
         with:
-          folder: ${{ env.ALLURE_RESULTS_PATH }}
+          folder: allure-report
       - run: 'echo "Report url: ${{ steps.deployment.outputs.page_url }}"'
   pull-request-comment:
     runs-on: ubuntu-latest
