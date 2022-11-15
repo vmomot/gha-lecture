@@ -66,8 +66,6 @@ jobs:
       - name: Deploy the report to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v1
-        with:
-          folder: allure-report
       - run: 'echo "Report url: ${{ steps.deployment.outputs.page_url }}"'
   pull-request-comment:
     runs-on: ubuntu-latest
