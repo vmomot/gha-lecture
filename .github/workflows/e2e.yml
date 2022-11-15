@@ -73,6 +73,8 @@ jobs:
       - name: Deploy the report to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v1
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
       - run: 'echo "Report url: ${{ steps.deployment.outputs.page_url }}"'
   pull-request-comment:
     runs-on: ubuntu-latest
