@@ -5,6 +5,14 @@ on:
     branches:
       - main
   workflow_dispatch:
+  workflow_call:
+    secrets:
+      GITHUB_TOKEN:
+        description: 'GitHub token'
+        required: true
+      BASE_URL:
+        description: 'Base URL'
+        required: true
 
 env:
   ALLURE_RESULTS_PATH: ./allure-results
@@ -67,7 +75,7 @@ jobs:
           folder: allure-report
   pr-comment:
     needs: generate-report
-    if: ${{ github.event.workflow_run.workflows.e2e.event_name }}
+    if: ${{ github.event.workflow_run.workflows.e2e.event_name }} == 'pull_request'
     runs-on: ubuntu-latest
     steps:
       - name: Add link to PR
