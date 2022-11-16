@@ -18,7 +18,7 @@ jobs:
         uses: matt-ball/newman-action@v1.0.4
         with:
           collection: postman/example_collection.json
-          delayRequest: 1000
+          delayRequest: 200
       - name: Notify that tests is success
         run: echo 'Tests success!'
         if: ${{ steps.build.outcome }} == 'success'
