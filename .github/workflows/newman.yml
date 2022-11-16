@@ -14,8 +14,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Run Postman integration tests with Newman
+        id: tests
         uses: matt-ball/newman-action@v1.0.4
         with:
           collection: postman/postman_collection.json
-          #reporters: '["emojitrain"]'
           delayRequest: 1000
+      - name: Notify that tests is success
+        run: echo 'Tests success!'
+        if: ${{ tests.status == 'SUCCESS' }}
