@@ -21,7 +21,7 @@ jobs:
           delayRequest: 200
       - name: Notify that tests is success
         run: echo 'Tests success!'
-        if: ${{ steps.build.outcome }} == 'success'
+        if: ${{ steps.build.outcome }} == 'SUCCESS'
       - name: Notify that tests is failed
         run: echo 'Tests failed!'
-        if: ${{ steps.build.outcome }} == 'failure'
+        if: ${{ steps.build.outcome }} == 'FAIL'
