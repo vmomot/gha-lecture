@@ -1,2 +1,2 @@
 "Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
-"passed","Wed Nov 16 17:35:20 GMT 2022","Wed Nov 16 17:35:21 GMT 2022","733","tests","test_shop","TestShop","","","The customer can add a product to the cart and checkout it",""
+"passed","Wed Nov 16 17:41:44 GMT 2022","Wed Nov 16 17:41:45 GMT 2022","1005","tests","test_shop","TestShop","","","The customer can add a product to the cart and checkout it",""
