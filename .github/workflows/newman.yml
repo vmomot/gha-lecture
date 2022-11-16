@@ -17,7 +17,7 @@ jobs:
         id: test
         uses: matt-ball/newman-action@v1.0.4
         with:
-          collection: postman/postman_collection.json
+          collection: postman/example_collection.json
           delayRequest: 1000
       - name: Notify that tests is success
         run: echo 'Tests success!'
