@@ -21,4 +21,4 @@ jobs:
           delayRequest: 1000
       - name: Notify that tests is success
         run: echo 'Tests success!'
-        if: ${{ jobs.integration-tests.test.status }} == 'SUCCESS'
+        if: steps.build.outcome == 'success'
