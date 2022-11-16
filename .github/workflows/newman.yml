@@ -2,8 +2,9 @@ name: Newman tests
 
 
 on:
-  schedule:
-    - cron: '0 4 * * *'
+  pull_request:
+    branches:
+      - main
   workflow_dispatch:
 
 
@@ -21,7 +22,7 @@ jobs:
           delayRequest: 200
       - name: Notify that tests is success
         run: echo 'Tests success!'
-        if: ${{ steps.build.outcome }} == 'SUCCESS'
+        if: success()
       - name: Notify that tests is failed
         run: echo 'Tests failed!'
-        if: ${{ steps.build.outcome }} == 'FAIL'
+        if: failure()
