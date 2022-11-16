@@ -5,6 +5,14 @@ on:
     branches:
       - main
   workflow_dispatch:
+  workflow_call:
+    secrets:
+      GITHUB_TOKEN:
+        description: 'GitHub token'
+        required: true
+      BASE_URL:
+        description: 'Base URL'
+        required: true
 
 env:
   ALLURE_RESULTS_PATH: ./allure-results
