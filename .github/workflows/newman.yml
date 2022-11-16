@@ -22,3 +22,6 @@ jobs:
       - name: Notify that tests is success
         run: echo 'Tests success!'
         if: ${{ steps.build.outcome }} == 'success'
+      - name: Notify that tests is failed
+        run: echo 'Tests failed!'
+        if: ${{ steps.build.outcome }} == 'failure'
