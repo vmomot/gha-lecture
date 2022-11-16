@@ -69,7 +69,7 @@ jobs:
         uses: mshick/add-pr-comment@v1
         with:
           message: |
-            Test report will generated at: ${{ secrets.GITHUB_PAGES_URL }}
+            Test report will generated at: ${{ secrets.PAGES_URL }}
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           repo-token-user-login: 'github-actions[bot]'
         if: ${{ github.event.workflow_run.workflows.e2e.event_name }} == 'pull_request'
