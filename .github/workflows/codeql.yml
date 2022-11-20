@@ -1,13 +1,13 @@
-name: "CodeQL"
+name: "Security scanner"
 
 on:
   pull_request:
-    branches: [ "main", "develop" ]
+    branches: "main"
   workflow_dispatch:
 
 
 jobs:
-  security-scanning:
+  codeql:
     runs-on: ubuntu-latest
     permissions:
       actions: read
@@ -30,3 +30,11 @@ jobs:
       uses: github/codeql-action/analyze@v2
       with:
         category: "/language:${{matrix.language}}"
+  bandit:
+    - uses: jpetrucciani/bandit-check@master
+    - uses: jpetrucciani/bandit-check@master
+      with:
+        path: '.'
+    - uses: jpetrucciani/bandit-check@master
+      with:
+        bandit_flags: '-lll -o output.json -f json'
