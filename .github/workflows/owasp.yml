@@ -21,7 +21,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           target: ${{ env.target }}
           cmd_options: '-a'
-  zap_scan:
+  zap_full_scan:
     runs-on: ubuntu-latest
     name: Scan the webapplication
     steps:
