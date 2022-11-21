@@ -42,11 +42,13 @@ jobs:
 
       - name: upload Anchore scan SARIF report
         uses: github/codeql-action/upload-sarif@v2
+        if: always()
         with:
           sarif_file: ${{ steps.scan.outputs.sarif }}
 
       - name: Inspect action SARIF report
         run: cat ${{ steps.scan.outputs.sarif }}
+        if: always()
 
       - name: Login to Docker Hub
         uses: docker/login-action@v2
@@ -70,7 +72,6 @@ jobs:
     steps:
       - name: Run Snyk to check Docker image for vulnerabilities
         uses: snyk/actions/docker@master
-        if: success()
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
         with:
@@ -79,5 +80,6 @@ jobs:
 
       - name: Upload result to GitHub Code Scanning
         uses: github/codeql-action/upload-sarif@v2
+        if: always()
         with:
           sarif_file: snyk.sarif
