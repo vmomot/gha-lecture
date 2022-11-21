@@ -6,13 +6,7 @@ on:
       - 'Dockerfile'
       - '.github/workflows/build.yml'
       - 'requirements.txt'
-#  pull_request:
-#    types: [ closed ]
-#    paths:
-#      - 'Dockerfile'
-#      - '.github/workflows/build.yml'
-#    branches:
-#      - 'develop'
+  workflow_dispatch:
 
 
 env:
