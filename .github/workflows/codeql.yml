@@ -7,7 +7,7 @@ on:
 
 
 jobs:
-  codeql:
+  code-ql:
     runs-on: ubuntu-latest
     permissions:
       actions: read
@@ -44,3 +44,11 @@ jobs:
     - uses: jpetrucciani/bandit-check@master
       with:
         bandit_flags: '-lll -o output.json -f json'
+  snyk:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run Snyk to check for vulnerabilities
+        uses: snyk/actions/python@master
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }
