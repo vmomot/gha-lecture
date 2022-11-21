@@ -2,7 +2,8 @@ name: Owasp Scanners
 
 on:
   push:
-    branch: 'security-experiments'
+    paths:
+      - '.github/workflows/owasp.yml'
   workflow_dispatch:
 
 env:
