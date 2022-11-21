@@ -16,7 +16,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: ZAP Scan
-        uses: zaproxy/action-baseline@v0.3.0
+        uses: zaproxy/action-baseline@master
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           target: ${{ env.target }}
@@ -28,7 +28,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: ZAP Scan
-        uses: zaproxy/action-full-scan@v0.4.0
+        uses: zaproxy/action-full-scan@master
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           docker_name: 'owasp/zap2docker-stable'
