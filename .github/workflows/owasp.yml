@@ -1,6 +1,8 @@
 name: Owasp Scanners
 
 on:
+  push:
+    branch: 'security-experiments'
   workflow_dispatch:
 
 env:
