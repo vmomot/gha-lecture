@@ -8,6 +8,9 @@ on:
 env:
   target: "https://itomychstudio.com/"
 
+permissions:
+  issues: write
+
 jobs:
   zap_baseline_scan:
     runs-on: ubuntu-latest
